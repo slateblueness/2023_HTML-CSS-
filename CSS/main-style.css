@@ -47,6 +47,11 @@ section{
     margin: auto;
 }
 
+a{
+    color: white;
+    text-decoration: none;
+}
+
 /* 클래스 이름을 통한 css 디자인 */
 /* header의 nav */
 .header{
@@ -54,6 +59,7 @@ section{
     width: 100%;
     position: fixed;
     color: white;
+    z-index: 10;
 }
 
 .header>.nav{
@@ -66,11 +72,11 @@ section{
     padding: 10px;
 }
 
-.header>.nav>.logo{
+.header>.nav .logo{
     width: 210px;
     margin-left: 0;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-family: 'PyeongChangPeace-Light';
 }
 
@@ -83,8 +89,6 @@ section{
 }
 
 .header>.nav>.menu a{
-    color: white;
-    text-decoration: none;
     font-family: 'establishRetrosansOTF';
     font-size: 1.5rem;
 }
@@ -119,7 +123,7 @@ section{
     width: 100%;
     min-height: 400px;
     height: 1000px;
-    background-image: url(./img/festival.jpg);
+    background-image: url(../img/festival.jpg);
     background-size: cover;
     background-position: center;
 }
@@ -130,11 +134,10 @@ section{
 }
 
 .section1-wrap>.poster{
-    background-image: url(./img/poster.png);
+    background-image: url(../img/poster.png);
     width: 500px;
     height: 700px;
     position: absolute;
-    z-index: 1;
     right :70px;
     margin-top: -900px;
     background-size: cover;
@@ -212,8 +215,6 @@ section{
 
 .section3-wrap>.section3-gallery>.gallery-title>a{
     background-color: #2e3192;
-    color: white;
-    text-decoration: none;
     padding: 10px 15px;
     border-radius: 15px;
     border: white solid 4px;
@@ -224,7 +225,12 @@ section{
     transition: all 0.3s;
 }
 
-.section3-wrap>.section3-gallery>.gallery-board{
+.section3-gallery>.gallery-board-wrap{
+    display: flex;
+    justify-content: space-around;
+}
+
+.section3-wrap>.section3-gallery .gallery-board{
     display: inline-block;
     width: 280px;
     height: 350px;
@@ -232,28 +238,28 @@ section{
     background-color: rgb(255, 255, 255);
 }
 
-.section3-wrap>.section3-gallery>.gallery-board:nth-child(2)>.image{
+.section3-wrap>.section3-gallery .gallery-board:nth-child(1)>.image{
     margin: 15px;
     width: 250px;
     height: 250px;
     border-radius: 30px;
-    background-image: url(./img/festival.jpg);
+    background-image: url(../img/festival.jpg);
 }
 
-.section3-wrap>.section3-gallery>.gallery-board:nth-child(3)>.image{
+.section3-wrap>.section3-gallery .gallery-board:nth-child(2)>.image{
     margin: 15px;
     width: 250px;
     height: 250px;
     border-radius: 30px;
-    background-image: url(./img/festival.jpg);
+    background-image: url(../img/festival.jpg);
 }
 
-.section3-wrap>.section3-gallery>.gallery-board:nth-child(4)>.image{
+.section3-wrap>.section3-gallery .gallery-board:nth-child(3)>.image{
     margin: 15px;
     width: 250px;
     height: 250px;
     border-radius: 30px;
-    background-image: url(./img/festival.jpg);
+    background-image: url(../img/festival.jpg);
 }
 
 /* section4 행사 뉴스 */
@@ -327,12 +333,47 @@ section{
 }
 
 .top-button>a{
-    color: white;
-    text-decoration: none;
     font-family: 'twaysky';
 }
 
 .top-button:hover{
     background-color: #e95996;
     transition: all 0.3s;
+}
+
+/* nav 모바일 버튼 */
+.nav>.mobile-button{
+    display: none;
+    background-image: url(../img/bars-solid.svg);
+    width: 35px;
+    height: 30px;
+    cursor: pointer;
+}
+
+/* 미디어 쿼리: nav */
+@media screen and (max-width: 767px) {
+    .header{background-color: rgba(236, 92, 153, 0.7);}
+    .nav>.mobile-button{
+        display: inline-block;
+        position: absolute;
+        top: 25px;
+        right: 20px;
+    }
+
+    .nav>.menu{
+        flex-direction: column;
+        height: 60px;
+    }
+
+    .nav>.menu>li{
+        display: none;
+    }
+
+    .nav>.mobile-button:hover+.menu, .nav>.menu:hover{
+        height: 100vh;
+    }
+
+    .nav>.mobile-button:hover+.menu>li, .nav>.menu:hover>li{
+        display: inline-block;
+    }
 }
